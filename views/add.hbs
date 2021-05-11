@@ -1,0 +1,23 @@
+<link rel = "stylesheet" href = "/index.css">
+{{#if error}}
+  <p>{{error}}</p>
+{{/if}}
+<div class="formHeader">
+  <div class="form-box">
+    <div class="button-box">
+      <div id = "socialNetworkButtons"></div>
+      <button type="button" class = "toggleButton"><i class="fa fa-vk fa-2x"></i></button>
+    </div>
+
+    <form class = "inputGroup" id = "pasteVkLink" action = "/add" method = "post">
+        <input id = "title" type = "text" class = "inputField" name = "title" placeholder = "Название списка" required value="{{data.title}}">
+        <input id = "link" type = "text" class = "inputField" name = "link" placeholder = "Ссылка на пост" required value="{{data.link}}">
+      
+        <input type = "hidden" name = "_csrf" value = "{{csrf}}">
+
+        <button class = "submitButton" id = "buttonVk">Сформировать</button>
+    </form>
+    </div>
+  </div>
+</div>
+

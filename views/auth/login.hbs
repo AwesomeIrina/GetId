@@ -1,0 +1,35 @@
+<div class="formHeader">
+  <div class="form-box">
+    <div class="button-box2">
+      <div id = "loginLogoutButtons"></div>
+      <button type="button" class = "toggleButton" onclick = "login()">Войти</button>
+      <button type="button" class = "toggleButton" style = "padding-right: 7px; padding-left: 20px;" onclick = "register()">Регистрация</button>
+    </div>
+    
+    <form class = "inputGroup" id = "login" action = "/auth/login" method = "post">
+      {{#if logError}}
+        <p>{{logError}}</p>
+      {{else}}
+        {{#if regError}}
+          <p>{{regError}}</p>
+        {{/if}}
+      {{/if}}
+      <input type = "text" class = "inputField" id = "name"  name = "name" placeholder = "Имя пользователя" required>
+      <input type = "password" class = "inputField" id = "password" name = "password"  placeholder = "Пароль" required>
+      
+      <input type = "hidden" name = "_csrf" value = "{{csrf}}">
+      
+      <button type="submit" class = "submitButton">Войти</button>
+    </form>
+    
+    <form class = "inputGroup" id = "register" action = "/auth/register" method = "post">
+      <input type = "text" class = "inputField" id = "rname" name = "name"  placeholder = "Имя пользователя" required>
+      <input type = "password" class = "inputField" id = "rpassword" name = "password" placeholder = "Пароль" required>
+      <input type = "password" class = "inputField" id = "confirm" name = "confirm" placeholder = "Повторите пароль" required>
+      
+      <input type = "hidden" name = "_csrf" value = "{{csrf}}">
+      
+      <button type="submit" class = "submitButton">Зарегистрироваться</button>
+    </form>
+  </div>
+</div>

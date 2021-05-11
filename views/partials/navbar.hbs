@@ -1,0 +1,19 @@
+<header class = "header">
+  <div class = "conteiner">
+    <div class = "header__inner">
+      <div class = "header__logo"><a href = "/">GetId</a></div>
+        <nav class = "nav">
+          
+          <a class = "nav__link" href = "/getList">Быстрый список</a>
+          {{#if isAuth}}
+            <a class = "nav__link" href = "/add">Сформировать список</a>
+            <a class = "nav__link" href = "/userLists">Мои списки</a>
+            <a class = "nav__link" href = "/auth/logout">Выйти</a>
+          {{else}}
+            <a class = "nav__link" href = "/auth/login">Войти</a>
+          {{/if}}
+
+      </nav>
+    </div>
+  </div>
+</header>

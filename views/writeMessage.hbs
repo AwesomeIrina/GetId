@@ -1,0 +1,13 @@
+<link rel = "stylesheet" href = "/index.css">
+
+<form action = "/writeMessage/send" method = "POST">
+<div class = intro style= "top: 20%">
+    <h3 >Ввведите сообщение, которое получат все участники рассылки:</h3>
+    <input type="text" name = "sendMessage" class = "message" id = "inputMessage">
+    <input type= "hidden" name = "id" value= "{{list._id}}">
+
+    <input type = "hidden" name = "_csrf" value = "{{csrf}}">
+
+    <button type = "submit" class = "submitButton edit">Отправить сообщение</button>
+</div>
+</form>

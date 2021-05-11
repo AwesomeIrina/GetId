@@ -1,0 +1,39 @@
+<link rel = "stylesheet" href = "/userLists.css">
+<div class = "intro" style="top: auto;"><h4>Редактировать список</h4></div>
+        
+<form action = '/userLists/edit' method="POST">
+    <div class = "dataSet" id="setOfData">
+        
+        <div class = "bodyForList">
+            <input class = "inputField" style = "width: 35%;" type = "text" id = "list_title" name = "title" value = "{{list.title}}" required>
+            <div class = "dataList">
+
+        <ul id = "edit-list-ul">
+        Список пользователей:
+        {{#each list.vkUsers}}
+        <li>
+            <input class = "inputField" type = "text" name = "first_name" value = "{{first_name}}" required>
+            <input class = "inputField" type = "text" name = "last_name" value = "{{last_name}}">
+            <input class = "inputField" type = "text" name = "profile_id" value = "{{profile_id}}" required>
+            <button type = "button" class = "submitButton edit" style="margin: auto;" onclick="deleteUser()">Удалить пользователя</button>
+        </li>
+        
+        {{/each}}
+        <div id = "forAddNewField"></div>
+        </ul>
+    {{!-- {{#if @root.isAuth}} --}}
+        <div class = "listsButton" style="width: 500px; display: flex; justify-content: space-between; margin:auto;">
+            <input type= "hidden" name = "id" value= "{{list._id}}">
+            
+            <input type = "hidden" name = "_csrf" value = "{{csrf}}">
+            
+            {{!-- <button class = "submitButton edit" onclick="newField()">Добавить поле</button> --}}
+            <button type = "button" class = "submitButton edit" onclick="addFields()">Добавить пользователя</button>
+            <button type = "submit" class = "submitButton edit">Сохранить</button>
+        </div>
+    {{!-- {{/if}} --}}
+    
+            </div>
+        </div>
+    </div>
+</form>

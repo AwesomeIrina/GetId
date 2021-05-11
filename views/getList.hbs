@@ -1,0 +1,25 @@
+<link rel = "stylesheet" href = "/index.css">
+<div class="formHeader">
+  <div class="form-box">
+    <div class="button-box">
+      <div id = "socialNetworkButtons"></div>
+      <button type="button" class = "toggleButton"><i class="fa fa-vk fa-2x"></i></button>
+    </div>
+    <form class = "inputGroup" id = "pasteVkLink" action = "/" method = "post">
+      <input type = "text" class = "inputField" id = "vkLink" name = "inputVkLink" placeholder = "Ссылка на пост" required>
+      <input type="checkbox" id = "VkIsLike" name="like" value="like">
+      <label for="like">Like</label>
+      <input type="checkbox" id = "vkIsComment" name="comment" value="comment">
+      <label for="like">Comment</label>
+      <input type="checkbox" id = "vkIsRepost" name="repost" value="repost">
+      <label for="like">Repost</label>
+      
+      <input type = "hidden" name = "_csrf" value = "{{csrf}}">
+
+      <button class = "submitButton" id = "buttonVk">Получить список</button>
+    </form>
+    <div class="checkbox">
+    </div>
+  </div>
+</div>
+

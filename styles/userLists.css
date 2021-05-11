@@ -1,0 +1,60 @@
+body{
+    height: 100vh;
+    background: linear-gradient(to right, #da4a7a, #ffad06);
+}
+
+.listsButtons{
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.editButton{
+    /* width: 500px; */
+    /* display: flex; */
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.editInput{
+    width: 308px; /* Ширина поля с учетом padding */
+    height: 46px; /* Высота */
+    padding: 0 10px; /* Поля */
+    border: none; /* Убираем рамку */
+    font-size: 1em; /* Размер текста */
+    line-height: 46px; /* Выравниваем по  центру в IE */
+}
+
+.submitButton{
+    width: 130px;
+    height: 60px;
+    
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    
+    padding: 0;
+}
+
+.bodyForList{
+    margin: 50px;
+    text-align: center;
+}
+
+pre{
+    margin-top: 100px;
+}
+.dataSet{
+    height: 300px;
+    text-align: center;
+}
+
+
+.dataList ul{
+    display: inline-block;
+    align-items: center;
+}
+
+

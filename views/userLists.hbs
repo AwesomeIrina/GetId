@@ -1,0 +1,33 @@
+<link rel = "stylesheet" href = "/userLists.css">
+
+<div class = "dataSet" id="usersLists">
+{{#if lists.length}}
+{{#each lists}}
+    <div class = "bodyForList">
+    <div class = "dataList">
+        <h4>{{title}}</h4>
+        <ul>
+        {{#each vkUsers}}
+            <li>
+                <a href = "http://vk.com/id{{profile_id}}"> {{first_name}} {{last_name}}</a>
+            </li>
+        {{/each}}
+        </ul>
+        <div class = "listsButtons">
+            <form action = "/userLists/remove" method = "POST">
+                <input type = "hidden">
+
+                <input type = "hidden" name = "_csrf" value = "{{@root.csrf}}">
+
+                <button type = "submit" class = "submitButton remove" name = "id" value="{{_id}}">Удалить</button>
+            </form>
+            <a href = "/userLists/{{_id}}/edit?allow=true"><button class = "submitButton" id = "buttonVk">Редактировать</button></a>
+            <a href = "/writeMessage/{{_id}}/edit?allow=true"><button class = "submitButton" id = "buttonVk">Написать сообщение</button></a>
+        </div>
+    </div>
+    </div>
+{{/each}}
+{{else}}
+    <pre>There is no lists</pre>
+{{/if}}
+</div>
