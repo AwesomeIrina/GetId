@@ -21,7 +21,6 @@
         {{/each}}
         <div id = "forAddNewField"></div>
         </ul>
-    {{!-- {{#if @root.isAuth}} --}}
         <div class = "listsButton" style="width: 500px; display: flex; justify-content: space-between; margin:auto;">
             <input type= "hidden" name = "id" value= "{{list._id}}">
             
@@ -30,9 +29,7 @@
             {{!-- <button class = "submitButton edit" onclick="newField()">Добавить поле</button> --}}
             <button type = "button" class = "submitButton edit" onclick="addFields()">Добавить пользователя</button>
             <button type = "submit" class = "submitButton edit">Сохранить</button>
-        </div>
-    {{!-- {{/if}} --}}
-    
+        </div>    
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ const {validationResult} = require('express-validator'); //const {body} = requir
 const User = require('../models/user');
 const { registerValidators } = require('../utils/validators');
 const { loginValidators } = require('../utils/validators');
+const { crossOriginResourcePolicy } = require('helmet');
 const router = Router();
 
 
@@ -21,7 +22,8 @@ router.get('/logout', async(req, res) =>{
     }); 
 });
 
-// //логин
+
+
 router.post('/login', loginValidators, async (req, res) =>{
     try {
         const{name, password} = req.body;
@@ -40,27 +42,6 @@ router.post('/login', loginValidators, async (req, res) =>{
             }
             res.redirect('/userLists');
         })
-
-    //     const candidate = await User.findOne({name});
-    //     if(candidate){
-    //         const areSame = await bcrypt.compare(password, candidate.password);
-    //         if(areSame){
-    //             req.session.user = candidate;
-    //             req.session.isAuthenticated = true;
-    //             req.session.save(error => {
-    //     if(error){
-    //         throw error;
-    //     }
-    //     res.redirect('/userLists');
-    // })
-    //         }else {
-    //             req.flash('logError', 'Неверный пароль');
-    //             res.redirect('/auth/login');
-    //         }
-    //     }else {
-    //         req.flash('logError', 'Такого пользователя не существует');
-    //         res.redirect('/auth/login');
-    //     }
         
     } catch (error) {
         console.log(error);
@@ -69,20 +50,22 @@ router.post('/login', loginValidators, async (req, res) =>{
 });
 
 
- //регистрация
+
 router.post('/register', registerValidators, async (req, res) => {
     try{
-        const{name, password} = req.body;
+        const{name, password, groupToken} = req.body;
 
         const errors = validationResult(req);
         if(!errors.isEmpty()){
             req.flash('regError', errors.array()[0].msg);
             return res.status(422).redirect('/auth/login')
         }
-        //шифруем пароль, 10 символов шифрования, чтобы было сложнее взломать
         const hashPassword = await bcrypt.hash(password, 10)
         const user = new User({
-            name, password: hashPassword, lists: {items: []}//, userList: {items: []}
+            name, 
+            password: hashPassword, 
+            userData: {items: []}, 
+            groupToken
         });
         await user.save();
         res.redirect('/auth/login');
@@ -91,6 +74,7 @@ router.post('/register', registerValidators, async (req, res) => {
         console.log(error);
     }
 })
+
 
 
 module.exports = router;

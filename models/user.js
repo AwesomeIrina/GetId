@@ -19,8 +19,11 @@ const userSchema = new Schema({
                 type: Array,
                 required: true,
             },
-        }]
+        }],
     },
+    groupToken: {
+        type: String,
+    }
 });
 
 userSchema.methods.addToAcc = function(list) {
@@ -71,61 +74,8 @@ function wordsCount(names){
     return str.split(' ').length;
 }
 
-function deleteEmpty(names){
-    names = names.filter(function (el) {
-        if(el) return el ;
-      });
-      return names;
-}
-
 
 userSchema.methods.update = function(list){
-    //если приходит один элемент, list.first_name становится длины этого элемента, нужно пофиксить
-    //попробуй оптимизировать: чтобы не вызывать cloneItems и чтобы делать проверку на пустоту ячеек массива заранее, до вызова этой функции
-    // list.first_name = deleteEmpty(list.first_name);
-    // list.last_name = deleteEmpty(list.last_name);
-    // list.profile_id = deleteEmpty(list.profile_id);
-
-    // let clonedItems = [...this.userData.items];
-    // let objUser;
-    // let vkUsers = new Array();
-    // let index = 0;
-
-    // let nameCounter = wordsCount(list.first_name);
-    // if(nameCounter == 1){
-    //     objUser = {
-    //         first_name: list.first_name,
-    //         last_name: list.last_name,
-    //         profile_id: list.profile_id,
-    //     }
-    //     vkUsers[index] = objUser;
-    // }else{
-    //     for(let user = 0; user < nameCounter; user++){
-    //         objUser = {
-    //             first_name: list.first_name[user],
-    //             last_name: list.last_name[user],
-    //             profile_id: list.profile_id[user],
-    //         }
-    //         vkUsers[index] = objUser;
-    //         index+=1;
-    //     }
-    // }
-
-    // if(vkUsers.length === 0){
-    //     this.removeFromLists(list.id);
-    //     return;
-    // }
-
-    // for(let item in clonedItems){
-    //     if (clonedItems[item]._id.toString() ===  list.id.toString()){
-    //         clonedItems[item].title = list.title;
-    //         clonedItems[item].vkUsers = vkUsers;
-    //     }
-    // }
-
-    // const newList = {items: clonedItems};
-    // this.userData = newList;
-    // return this.save();
 
     if(list.first_name == null){
         this.removeFromLists(list.id);

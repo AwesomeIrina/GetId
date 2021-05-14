@@ -22,12 +22,14 @@
                 <button type = "submit" class = "submitButton remove" name = "id" value="{{_id}}">Удалить</button>
             </form>
             <a href = "/userLists/{{_id}}/edit?allow=true"><button class = "submitButton" id = "buttonVk">Редактировать</button></a>
+            {{#if @root.isToken}}
             <a href = "/writeMessage/{{_id}}/edit?allow=true"><button class = "submitButton" id = "buttonVk">Написать сообщение</button></a>
+            {{/if}}
         </div>
     </div>
     </div>
 {{/each}}
 {{else}}
-    <pre>There is no lists</pre>
+    <pre>Списков нет</pre>
 {{/if}}
 </div>

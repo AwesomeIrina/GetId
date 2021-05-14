@@ -8,4 +8,10 @@ router.get('/', (req, res) => {
     })
 });
 
+router.get('/getToken', (req, res) => {
+    res.render('getToken', {
+        title: 'Как получить токен?',
+    })
+});
+
 module.exports = router;

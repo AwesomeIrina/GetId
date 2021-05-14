@@ -19,8 +19,10 @@ router.get('/:id/edit', auth, async (req, res) => {
 router.post('/send', auth, async (req, res) => {
     let list = await req.user.findListId(req.body.id)
     const message = req.body.sendMessage;
+    const groupToken = req.user.groupToken;
+    console.log(typeof groupToken)
     easyvk({
-        token: '8426e7ee14e5047f514f63c1968b642b6edc382b71a514f4ad3e56a39cf6eaede5007522744a53cfd955b'
+        token: groupToken//'8426e7ee14e5047f514f63c1968b642b6edc382b71a514f4ad3e56a39cf6eaede5007522744a53cfd955b'
       }).then(async vk => {
       
         for(user in list.vkUsers){
