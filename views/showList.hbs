@@ -1,0 +1,20 @@
+<link rel = "stylesheet" href = "/userLists.css">
+
+<div class = "dataSet" id="usersLists">
+{{#if list.length}}
+    <div class = "bodyForList">
+    <div class = "dataList">
+        <h4>{{title}}</h4>
+        <ul>
+        {{#each vkUsers}}
+            <li>
+                <a href = "http://vk.com/id{{profile_id}}"> {{first_name}} {{last_name}}</a>
+            </li>
+        {{/each}}
+        </ul>
+    </div>
+    </div>
+{{else}}
+    <pre>Списков нет</pre>
+{{/if}}
+</div>

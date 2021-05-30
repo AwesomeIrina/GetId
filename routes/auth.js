@@ -22,11 +22,9 @@ router.get('/logout', async(req, res) =>{
     }); 
 });
 
-
-
 router.post('/login', loginValidators, async (req, res) =>{
     try {
-        const{name, password} = req.body;
+        const{name, password, groupToken} = req.body;
 
         const errors = validationResult(req);
         if(!errors.isEmpty()){

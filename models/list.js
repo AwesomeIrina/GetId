@@ -1,10 +1,6 @@
 const {Schema, model} = require('mongoose');
 
 const list = new Schema({
-    title: {
-        type: String,
-        required: true,
-    },
     vkUsers: {
         type: Array,
         required: true,

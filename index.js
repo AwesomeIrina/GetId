@@ -13,6 +13,7 @@ const homeRoutes = require('./routes/home');
 const aboutRoutes = require('./routes/about');
 const addRoutes = require('./routes/add');
 const getListRoutes = require('./routes/getList');
+const showListRoutes = require('./routes/showList');
 const userListsRoutes = require('./routes/userLists');
 const messageRoutes = require('./routes/writeMessage');
 const varMiddleware = require('./middleware/variables')
@@ -75,6 +76,7 @@ app.use('/getList', getListRoutes);
 app.use('/userLists', userListsRoutes);
 app.use('/writeMessage', messageRoutes);
 app.use('/auth', authRoutes);
+app.use('/showList', showListRoutes);
 
 
 app.use(errorHandler);

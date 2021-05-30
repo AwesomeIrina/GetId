@@ -1,15 +1,21 @@
 const {Router} = require('express');
-const router = Router();
+const {validationResult} = require('express-validator');
 const easyvk = require('easyvk');
+const auth = require('../middleware/auth');
+const path = require('path');
+const { listValidators } = require('../utils/validators');
+const router = Router();
+const List = require('../models/list');
 
-router.get('/', (req, res) => {
-    res.render('getList', {
-        title: 'Получить список',
-    })
-});
 
-router.post('/',  async (req, res) => {
-    let link = req.body['postLink'];
+// router.get('/', (req, res) => {
+//     res.render('getList', {
+//         title: 'Получить список',
+//     })
+// });
+
+router.post('/', async (req, res) => {
+    let link = req.body['inputVkLink'];
     //split link on two parts
     link = link.split('wall').pop();
     //get owner and post ids from the part of link
@@ -43,14 +49,14 @@ router.post('/',  async (req, res) => {
           vkUsers[user] = objUser;
         }
 
-          const list = {
-            title: req.body.title,
-            vkUsers: vkUsers,
-          }
+        const list = new List({
+          vkUsers: vkUsers,
+        })
+        console.log(list)
           
           try {
-            await req.user.addToAcc(list);
-            res.redirect('/userLists');
+            await list.save();
+            res.redirect('/showList');
           } catch (error) {
             console.log(error);
           }

@@ -7,7 +7,6 @@ const { listValidators } = require('../utils/validators');
 const router = Router();
 
 
-
 router.get('/', auth, (req, res) => {
     res.render('add', {
         title: 'Сформировать список',
@@ -78,5 +77,4 @@ router.post('/', auth, listValidators, async (req, res) => {
       })
 
 })
-
 module.exports = router;

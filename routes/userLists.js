@@ -6,7 +6,7 @@ const router = Router();
 router.get('/', auth, async (req, res) => {
     const user = await req.user.populate('userData.items');
     const lists = user.userData.items.map(l => ({
-         ...l._doc
+         ...l._doc //... - фишка ES6 синтаксиса - перебор всех элементов массива
     }));
     res.render('userLists', {
         title: 'My Lists',
@@ -21,6 +21,7 @@ router.get('/:id/edit', auth, async (req, res) => {
     }
     let list = await req.user.findListId(req.params.id);
     list = list._doc;
+    console.log(list);
     res.render('list-edit', {
         title: `Редактировать ${list.title}`,
         list,
